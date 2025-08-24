@@ -5,7 +5,6 @@ import { resolve } from 'path';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' ? '/BrainBridge/' : '/',
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
@@ -15,11 +14,10 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: process.env.NODE_ENV !== 'production',
-    minify: 'terser',
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ['react', 'react-dom', 'react-router-dom'],
+          react: ['react', 'react-dom'],
           framer: ['framer-motion'],
           icons: ['react-icons'],
         },
